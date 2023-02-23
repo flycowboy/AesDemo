@@ -18,9 +18,11 @@ func main() {
 }
 
 func testApi() {
+	url := "http://localhost:8080/json"
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", "http://localhost:8080/json", nil)
+	req, err := http.NewRequest("GET", url, nil)
 
+	fmt.Println("Client get url: ", url)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -40,6 +42,7 @@ func testApi() {
 	}
 	dataStr := string(body)
 	fmt.Println(res.Status)
-	fmt.Println(dataStr)
+	fmt.Println("get response:", dataStr)
 	fmt.Println("decrypt data: " + KeyDecrypt("SecretKey", dataStr))
+	fmt.Println("--------------------------------------------------")
 }

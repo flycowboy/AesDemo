@@ -14,11 +14,12 @@ func main() {
 
 	http.HandleFunc("/json",
 		func(w http.ResponseWriter, r *http.Request) {
-			fmt.Printf("got / request \n")
+			fmt.Printf("Server get a request \n")
 
 			responseJson := string("{\"a\":1}")
 			responseStr := KeyEncrypt("SecretKey", responseJson)
-			fmt.Println("response: ", responseStr)
+			fmt.Println("send response: ", responseStr)
+			fmt.Println("--------------------------------------------------")
 			io.WriteString(w, responseStr)
 		})
 
